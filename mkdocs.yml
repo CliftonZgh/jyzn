@@ -1,0 +1,109 @@
+site_name: 安心就医指南
+site_description: 从预约挂号到复诊随访，一份清晰、实用的就医行动指南
+site_url: https://medical-guide.pages.dev/
+repo_name: 就医指南
+
+theme:
+  name: material
+  language: zh
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - 首页: index.md
+  - 就医前:
+      - 判断去哪里: before/where-to-go.md
+      - 预约与挂号: before/registration.md
+      - 就诊准备清单: before/checklist.md
+  - 就医中:
+      - 高效描述病情: during/communication.md
+      - 检查与用药: during/exams-medicine.md
+  - 就医后:
+      - 复诊与随访: after/follow-up.md
+      - 病历资料管理: after/records.md
+  - 医院库:
+      - 医院库首页: hospitals/index.md
+      - 中国:
+          - 全国索引: hospitals/china/index.md
+          - 北京: hospitals/china/beijing.md
+          - 上海: hospitals/china/shanghai.md
+          - 广东:
+              - 广东省索引: hospitals/china/guangdong/index.md
+              - 广州: hospitals/china/guangdong/guangzhou.md
+              - 深圳: hospitals/china/guangdong/shenzhen.md
+      - 医院档案:
+          - 北京协和医院·东单院区: hospitals/profiles/pumch-dongdan.md
+          - 瑞金医院·总院: hospitals/profiles/ruijin-main.md
+          - 中山一院·越秀院区: hospitals/profiles/sysu-first-yuexiu.md
+          - 深圳市人民医院·留医部: hospitals/profiles/shenzhen-people-liuyibu.md
+      - 资料规范: hospitals/editorial-policy.md
+  - 示例指南包:
+      - 手机完整指南: guides/example/index.md
+      - 当前阶段速查: guides/example/quick.md
+      - 一页打印版: guides/example/print.md
+      - 局部示意图: guides/example/schematic.md
+      - 二维码与外部地图: guides/example/qr.md
+      - 发布验收记录: guides/example/release.md
+  - 真实院区指南:
+      - 珠江新城院区普通门诊: guides/zhujiang-new-town/index.md
+  - 实用工具:
+      - 就医信息卡: tools/medical-card.md
+      - 常见问题: faq.md
+  - 关于: about.md
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/print-card.js
+
+copyright: 本指南仅供健康教育与就医准备参考，不替代医生诊断和治疗。

@@ -1,0 +1,789 @@
+{
+  "package": {
+    "name": "安心示例院区门诊指南",
+    "is_example": true,
+    "campus_item_id": "campus-identity-01",
+    "scope_item_id": "guide-scope-01",
+    "safety_item_id": "safety-notice-01",
+    "fallback_item_id": "onsite-fallback-01",
+    "selected_branch": "妇科门诊",
+    "selected_exam_item_id": "exam-card-gyn-ultrasound-01",
+    "current_stage": "到院",
+    "active_conditions": ["普通门诊", "日间开放", "普通步行路线", "日间服务"]
+  },
+  "release": {
+    "spec_delivery": {
+      "fields_and_templates_complete": true,
+      "evidence_and_gaps_complete": true,
+      "acceptance_checklist_complete": true,
+      "example_not_publication": "本包只使用虚构示例数据；规范交付就绪不代表真实患者指南已经发布。"
+    },
+    "schematics": [
+      {
+        "id": "schematic-entry-guidance-01",
+        "name": "示例入口至蓝色圆形标志局部示意图",
+        "route_item_ids": ["route-segment-01"],
+        "coverage": "示例门诊入口 A 至蓝色圆形标志",
+        "breakpoint": "蓝色圆形标志之后不在本图覆盖范围"
+      }
+    ],
+    "qr_targets": [
+      {
+        "id": "qr-guide-example",
+        "name": "示例院区手机完整指南",
+        "campus_item_id": "campus-identity-01",
+        "url": "https://medical-guide.pages.dev/guides/example/",
+        "short_url": "https://medical-guide.pages.dev/g/example",
+        "verified_on": "2026-08-01",
+        "fallback": "手动输入短链接；仍无法打开时查看预约单并询问院内工作人员。",
+        "dependent_item_ids": ["campus-identity-01", "route-segment-01"],
+        "public_and_updatable": true
+      }
+    ],
+    "external_maps": [
+      {
+        "name": "示例门诊入口 A 室外锚点",
+        "url": "https://medical-guide.pages.dev/g/example/map",
+        "item_id": "arrival-anchor-01",
+        "scope": "仅院区地址和已核验室外锚点；平台室内点位不作为服务点证据"
+      }
+    ],
+    "print": {
+      "online_review_url": "https://medical-guide.pages.dev/g/example",
+      "expiry_warning": "超过资料有效期或现场不一致时停止使用",
+      "official_fallback": "查看预约单并询问院内工作人员"
+    },
+    "accessibility_checks": [
+      "320px宽度",
+      "字体放大",
+      "键盘与清晰焦点",
+      "触控",
+      "屏幕阅读器基本阅读顺序",
+      "非颜色唯一编码",
+      "图片文字等价",
+      "黑白打印"
+    ],
+    "privacy_checks": [
+      "患者页面",
+      "链接参数",
+      "二维码",
+      "图片",
+      "反馈入口",
+      "汇总统计"
+    ],
+    "publication_checks": {
+      "end_to_end_route_item_ids": ["route-segment-01", "route-segment-02"],
+      "general_service_point_item_id": "service-point-01",
+      "high_risk_review_complete": true,
+      "derived_consistency_complete": true,
+      "technical_and_accessibility_complete": true,
+      "limited_coverage": "仅覆盖示例门诊入口 A 至示例导诊服务点，不宣称完整院区导航。"
+    },
+    "representative_tests": {
+      "tester_count": 5,
+      "editors_excluded": true,
+      "profiles": ["首次到院", "携幼陪诊", "可访问性重点测试", "驾车到院", "纸质指南使用者"],
+      "tasks": ["公共交通到院", "停车满位切换", "寻找服务点", "核对检查项目", "报告领取或离院"],
+      "dangerous_advice_count": 0,
+      "wrong_route_count": 0,
+      "false_continuity_count": 0
+    },
+    "workflow": ["编辑草稿", "证据与风险复核", "内部预览", "小范围现场试运行", "严重问题修正", "正式公开"],
+    "pilot": {
+      "completed": true,
+      "declared_conditions_walked": true,
+      "serious_issues_resolved": true
+    },
+    "owners": {
+      "maintenance": "示例内容维护负责人",
+      "expiry_reminders": "示例到期提醒负责人",
+      "feedback_queue": "示例反馈队列负责人",
+      "emergency_withdrawal": "示例紧急下架负责人",
+      "restoration": "示例独立恢复复核者"
+    }
+  },
+  "operations": {
+    "gaps": [
+      {
+        "item_id": "pharmacy-location-01",
+        "owner": "示例现场采集者",
+        "required_evidence": "药房正式标牌照片、工作人员确认及从已核验行动节点开始的连续走测",
+        "next_action": "在日间服务时段完成取药场景走测，记录楼栋、楼层、分区、失败兜底和服务时段",
+        "excluded": "患者身份、病历、预约内容和检查结果"
+      }
+    ],
+    "evidence_rules": {
+      "官方资料": "保存发布主体、标题、稳定链接、发布日期、获取日期和适用院区；截图不能代替可追溯链接。",
+      "电话或工作人员确认": "记录确认单位或岗位、日期时间、问题原文与答复摘要；不记录个人手机号或无关身份。",
+      "现场标识照片": "同时拍摄可辨认环境与正式标牌，记录拍摄位置和时间，并排除患者、人脸、证件、屏幕和车牌。",
+      "路线走测": "按患者真实场景从明确锚点连续走至终点，逐段记录行动节点、转向、楼层变化、通行条件和中断点。"
+    },
+    "collection_matrix": {
+      "公共交通出口": "核验出口正式编号、开放时段及至门诊入口的普通步行路线。",
+      "下客点": "核验即停即走性质、禁停边界、乘客与司机分流动作。",
+      "院内停车人行出口": "核验停车后步行起点、电梯或楼梯条件及至入口路线。",
+      "备用停车场": "核验当天可用入口、车辆限制、取车时段和已覆盖步行路线。",
+      "门诊入口": "核验正式名称、开放时段、外观标志和关闭时的现场兜底。",
+      "通用服务点": "覆盖导诊、报到、收费、抽血、影像、药房和报告领取的正式服务点。",
+      "独立无障碍路线": "以同一起终点单独连续走测坡道、电梯、过街和通道，不从普通路线推断。"
+    },
+    "route_evidence_packages": [
+      {
+        "route_item_id": "route-segment-01",
+        "start_node": "示例门诊入口 A",
+        "end_node": "蓝色圆形标志行动节点",
+        "action_and_landmarks": "从入口标牌直行，经过入口内侧示例总索引，到达蓝色圆形标志",
+        "direction_and_floor_change": "向前直行；同层，无楼层变化",
+        "conditions": "普通门诊、日间开放、普通步行路线",
+        "collected_at": "2026-08-01 09:30 +08:00",
+        "applicable_times": "日间开放时段",
+        "photo_privacy_check": "不含患者、人脸、证件、屏幕或车牌"
+      }
+    ],
+    "promotion_gates": {
+      "服务点": "正式名称、位置层级、适用人群与时段有合格证据后可提升；高风险适用差异须独立复核。",
+      "连续路线": "全部相邻路线段均完成同一场景走测且无断点后可提升。",
+      "无障碍路线": "同一起终点的独立端到端走测通过，并由独立复核者确认连续可达后可提升。",
+      "入口开放": "院方当前资料与现场时段核验一致，并经独立复核后可提升。",
+      "停车收费": "院方当前正式收费依据可追溯且经独立复核后可提升；实时余位不写入静态事实。",
+      "医疗准备": "仅本次预约单、医嘱或本院当前正式指引支持，且由独立复核者批准后可提升。"
+    },
+    "promotion_reviews": {
+      "arrival-anchor-01": {
+        "evidence_kinds": ["官方资料", "现场标识照片", "路线走测"],
+        "reviewer": "示例独立复核者",
+        "outcome": "approved"
+      },
+      "route-segment-01": {
+        "evidence_kinds": ["现场标识照片", "路线走测"],
+        "reviewer": "示例独立复核者",
+        "outcome": "approved"
+      },
+      "route-segment-02": {
+        "evidence_kinds": ["现场标识照片", "路线走测"],
+        "reviewer": "示例独立复核者",
+        "outcome": "approved"
+      },
+      "exam-card-gyn-ultrasound-01": {
+        "evidence_kinds": ["官方资料"],
+        "reviewer": "示例独立复核者",
+        "outcome": "approved"
+      }
+    },
+    "review_cycles": {
+      "high_risk_days": 30,
+      "route_days": 90,
+      "standard_days": 180
+    },
+    "event_triggers": {
+      "公告": "涉及入口、服务或检查流程时，将相关信息项转入复核并重建全部派生视图。",
+      "改造": "立即降级受影响路线段和下游路线、卡片、局部示意图及打印版，安排现场重测。",
+      "来源冲突": "隔离相关信息及其下游建议，标记为有争议并进入独立复核。",
+      "关键纠错": "创建待核验线索；安全级线索先隐藏再调查。",
+      "到期": "到期日当天停止形成推荐动作，进入复核队列。"
+    },
+    "events": [],
+    "conflict_policy": "来源冲突时隔离相关信息及全部下游建议；未解决前患者端只保留现场确认动作，不替患者裁决。",
+    "feedback_policy": "用户反馈只创建待核验线索，不直接修改正文；只接收位置错误、现场观察、日期和可选无敏感信息标识照片，明确拒绝患者身份、人脸、病历、预约和检查结果。",
+    "feedback_clues": [
+      {
+        "id": "feedback-clue-01",
+        "location": "示例门诊入口 A",
+        "observation": "入口标牌位置可能发生变化，等待现场复核",
+        "observed_on": "2026-08-05",
+        "status": "pending_verification"
+      }
+    ],
+    "audit_fields": [
+      "变更前",
+      "变更后",
+      "操作者",
+      "时间",
+      "原因",
+      "证据",
+      "复核结果",
+      "受影响内容"
+    ],
+    "audit_records": [
+      {
+        "before": "药房位置笼统待补充",
+        "after": "创建逐项采集任务，患者正文保持不变",
+        "operator": "示例内容维护者",
+        "occurred_at": "2026-08-05T09:00:00+08:00",
+        "reason": "将资料缺口转为可执行任务",
+        "evidence": "尚待现场采集",
+        "review_result": "保持待补充",
+        "affected_routes": [],
+        "affected_cards": ["pharmacy-location-01"],
+        "affected_outputs": ["完整指南", "速查视图", "一页打印版", "局部示意图"]
+      }
+    ],
+    "emergency_policy": "安全级问题立即隐藏信息项及全部派生内容，无需等待完整调查；恢复前必须补齐证据、独立复核和受影响路线重测。"
+  },
+  "items": [
+    {
+      "id": "campus-identity-01",
+      "name": "安心示例医院·中心院区",
+      "type": "campus",
+      "conditions": ["普通门诊"],
+      "source": "虚构示例资料",
+      "evidence": "示例院区身份记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2027-02-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": [],
+      "stage": "出发前",
+      "patient_text": "安心示例医院·中心院区（虚构）",
+      "next_action": "院区名称一致后，再查看到院入口。"
+    },
+    {
+      "id": "guide-scope-01",
+      "name": "指南覆盖范围",
+      "type": "scope",
+      "conditions": ["普通门诊"],
+      "source": "虚构示例资料",
+      "evidence": "示例覆盖范围审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "patient_text": "普通门诊：示例门诊入口 A 至示例导诊服务点"
+    },
+    {
+      "id": "safety-notice-01",
+      "name": "安全优先说明",
+      "type": "safety_notice",
+      "conditions": ["普通门诊"],
+      "source": "虚构示例资料",
+      "evidence": "示例安全规则审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "patient_text": "本次预约单或医嘱、当天院内指引与工作人员指示优先于本指南；急症请立即寻求急诊帮助。"
+    },
+    {
+      "id": "onsite-fallback-01",
+      "name": "现场确认兜底",
+      "type": "fallback",
+      "conditions": ["普通门诊"],
+      "source": "虚构示例资料",
+      "evidence": "示例安全规则审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "patient_text": "停止前进，查看预约单，并在最近的服务台询问工作人员。"
+    },
+    {
+      "id": "guidance-service-01",
+      "name": "普通门诊导诊",
+      "type": "service",
+      "conditions": ["普通门诊", "日间服务"],
+      "source": "虚构示例资料",
+      "evidence": "示例服务定义",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "报到",
+      "patient_text": "协助患者确认普通门诊报到位置。"
+    },
+    {
+      "id": "arrival-anchor-01",
+      "name": "示例门诊入口 A",
+      "type": "arrival_anchor",
+      "conditions": ["普通门诊", "日间开放"],
+      "source": "虚构现场走测",
+      "evidence": "示例入口标志照片和连续走测记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "到院",
+      "patient_text": "到达标有“示例门诊入口 A”的虚构入口后，先停下核对入口名称。",
+      "next_action": "入口名称一致时进入，并寻找蓝色示例导诊标志。"
+    },
+    {
+      "id": "route-segment-01",
+      "name": "示例入口 A 至蓝色圆形标志",
+      "type": "route_segment",
+      "conditions": ["普通门诊", "日间开放", "普通步行路线"],
+      "source": "虚构现场走测",
+      "evidence": "示例起点、转向点、终点照片和连续走测记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["arrival-anchor-01"],
+      "stage": "报到",
+      "start_landmark": "示例门诊入口 A 标牌",
+      "action": "进入后直行至蓝色圆形标志",
+      "along_landmarks": ["入口内侧示例总索引"],
+      "end_landmark": "蓝色圆形标志",
+      "route_mode": "普通步行路线",
+      "patient_text": "从示例入口 A 进入，直行至蓝色圆形标志。",
+      "next_action": "在蓝色圆形标志处停下，确认标志后再左转。"
+    },
+    {
+      "id": "arrival-plan-transit-01",
+      "name": "公共交通到院",
+      "type": "arrival_plan",
+      "conditions": ["普通门诊", "日间开放"],
+      "source": "虚构院方交通说明",
+      "evidence": "示例稳定到院规则记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["arrival-anchor-01"],
+      "stage": "到院",
+      "risk_rank": 1,
+      "audience": "可步行或由同行者协助从公共交通站点到院者",
+      "before_departure": "在官方实时入口确认班次、出口开放和道路施工。",
+      "arrival_anchor_id": "arrival-anchor-01",
+      "failure_trigger": "推荐出口关闭、路线中断，或同行者无法安全完成步行。",
+      "preferred_alternative": "改用可安全停靠的即停即走方案。",
+      "final_fallback": "停止前进，通过预约单或院方官方渠道确认入口。",
+      "realtime": {
+        "label": "虚构院方官方实时交通入口",
+        "url": "https://example.invalid/official-transit",
+        "when_to_check": "出发前查询"
+      },
+      "patient_text": "优先选择公共交通。"
+    },
+    {
+      "id": "arrival-plan-dropoff-01",
+      "name": "即停即走下客",
+      "type": "arrival_plan",
+      "conditions": ["普通门诊", "日间开放"],
+      "source": "虚构院方交通说明",
+      "evidence": "示例下客规则记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["arrival-anchor-01"],
+      "stage": "到院",
+      "risk_rank": 2,
+      "audience": "有同行司机，且乘客可独立下车或由另一名陪护持续陪同者；不适用于独自到院、无法独立下车或需要司机持续陪护者",
+      "before_departure": "乘客或同行者确认当天开放的下客入口。",
+      "arrival_anchor_id": "arrival-anchor-01",
+      "failure_trigger": "下客区关闭、无法即停即走，或乘客缺少下车后的持续陪护。",
+      "preferred_alternative": "驶往已确认可用的停车方案。",
+      "final_fallback": "安全停车后联系院方确认，不在禁停路段等候。",
+      "passenger_action": "车辆停稳后下车，与非驾驶陪护一起前往入口。",
+      "driver_action": "仅在允许位置停车，下客完成后立即驶离，不下车陪同。",
+      "realtime": {
+        "label": "虚构院方官方入口状态",
+        "url": "https://example.invalid/official-entrance",
+        "when_to_check": "出发前由乘客查询"
+      },
+      "patient_text": "乘客与司机执行不同动作。"
+    },
+    {
+      "id": "arrival-plan-drive-01",
+      "name": "驾车并预约停车",
+      "type": "arrival_plan",
+      "conditions": ["普通门诊", "日间开放"],
+      "source": "虚构院方停车说明",
+      "evidence": "示例停车稳定规则记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["arrival-anchor-01"],
+      "stage": "到院",
+      "risk_rank": 3,
+      "audience": "确需驾车且能在出发前完成停车查询者",
+      "before_departure": "通过官方实时入口查询余位、预约、收费、限高和入口状态。",
+      "arrival_anchor_id": "arrival-anchor-01",
+      "failure_trigger": "未预约成功、停车场满位、车辆条件不符或入口关闭。",
+      "preferred_alternative": "切换至官方实时入口显示的备用停车场。",
+      "final_fallback": "安全驶离并停车后重新查询，不在入口排队操作手机。",
+      "realtime": {
+        "label": "虚构院方官方实时停车入口",
+        "url": "https://example.invalid/official-parking",
+        "when_to_check": "出发前查询；途中仅由乘客操作或安全停车后查询"
+      },
+      "patient_text": "静态指南不承诺车位。"
+    },
+    {
+      "id": "arrival-plan-overflow-01",
+      "name": "停车满位分流",
+      "type": "arrival_plan",
+      "conditions": ["普通门诊", "日间开放"],
+      "source": "虚构院方停车说明",
+      "evidence": "示例停车分流规则记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["arrival-anchor-01"],
+      "stage": "到院",
+      "risk_rank": 4,
+      "audience": "院内停车不可用且驾驶员已在安全位置停车者",
+      "before_departure": "预先保存官方实时停车入口，了解不保证备用车位。",
+      "arrival_anchor_id": "arrival-anchor-01",
+      "failure_trigger": "首选停车场满位、关闭，或步行条件不适用。",
+      "preferred_alternative": "只选择官方实时入口当时显示可用且条件匹配的停车场。",
+      "final_fallback": "保持安全停车并联系院方；不要边驾驶边滚动、查询或切换。",
+      "realtime": {
+        "label": "虚构院方官方停车分流入口",
+        "url": "https://example.invalid/official-overflow",
+        "when_to_check": "出发前、由乘客操作或安全停车后查询"
+      },
+      "patient_text": "备用停车以实时信息为准。"
+    },
+    {
+      "id": "action-node-01",
+      "name": "蓝色圆形标志行动节点",
+      "type": "action_node",
+      "conditions": ["普通门诊", "日间开放", "普通步行路线"],
+      "source": "虚构现场走测",
+      "evidence": "示例行动节点照片与识别记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["route-segment-01"],
+      "stage": "到院",
+      "patient_text": "确认蓝色圆形标志后，在标志处左转。",
+      "next_action": "左转后查看前方的示例导诊台标志。"
+    },
+    {
+      "id": "route-segment-02",
+      "name": "蓝色圆形标志至示例导诊台",
+      "type": "route_segment",
+      "conditions": ["普通门诊", "日间开放", "普通步行路线"],
+      "source": "虚构现场走测",
+      "evidence": "示例起点与终点照片和连续走测记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["action-node-01"],
+      "stage": "报到",
+      "start_landmark": "蓝色圆形标志",
+      "action": "在标志处左转后直行",
+      "along_landmarks": ["示例候诊区标牌"],
+      "end_landmark": "示例导诊台正式标牌",
+      "route_mode": "普通步行路线",
+      "patient_text": "从蓝色圆形标志左转，直行至示例导诊台。",
+      "next_action": "在示例导诊台出示预约单，确认本次报到地点。"
+    },
+    {
+      "id": "service-point-01",
+      "name": "示例导诊服务点",
+      "type": "service_point",
+      "conditions": ["普通门诊", "日间服务"],
+      "source": "虚构现场走测",
+      "evidence": "示例服务点名称与服务范围记录",
+      "status": "partial",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["route-segment-02"],
+      "stage": "报到",
+      "service_id": "guidance-service-01",
+      "campus": "安心示例医院·中心院区",
+      "building": "示例门诊楼",
+      "floor": "待确认",
+      "zone": "待确认",
+      "confirmed_fields": ["name", "stage", "conditions", "patient_text", "next_action"],
+      "patient_text": "示例导诊服务点可协助确认普通门诊报到位置；具体楼层尚未证实，因此不显示。",
+      "next_action": "向工作人员说明预约单上的正式服务名称。",
+      "unconfirmed_floor": "待补充"
+    },
+    {
+      "id": "pharmacy-service-01",
+      "name": "普通门诊取药",
+      "type": "service",
+      "conditions": ["普通门诊"],
+      "source": "待现场采集",
+      "evidence": "尚无合格证据",
+      "status": "pending",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "待分配",
+      "dependencies": ["campus-identity-01"],
+      "stage": "缴费取药",
+      "patient_text": "此服务尚未核验，不应出现在患者视图。"
+    },
+    {
+      "id": "pharmacy-location-01",
+      "name": "示例药房位置",
+      "type": "service_point",
+      "conditions": ["普通门诊"],
+      "source": "待现场采集",
+      "evidence": "尚无合格证据",
+      "status": "pending",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "待分配",
+      "dependencies": ["campus-identity-01"],
+      "stage": "缴费取药",
+      "service_id": "pharmacy-service-01",
+      "patient_text": "此位置尚未核验，不应出现在患者视图。",
+      "next_action": "不应显示。"
+    },
+    {
+      "id": "journey-step-01",
+      "name": "出发前核对",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "出发前",
+      "journey_order": 1,
+      "patient_text": "核对院区、日期、时段和预约单上的正式服务名称。"
+    },
+    {
+      "id": "journey-step-02",
+      "name": "选择到院方案",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "出发前",
+      "journey_order": 2,
+      "patient_text": "从已核验方案中选择适合本次情况的到院方式。"
+    },
+    {
+      "id": "journey-step-03",
+      "name": "确认入口",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["arrival-anchor-01"],
+      "stage": "到院",
+      "journey_order": 3,
+      "patient_text": "到院后先核对入口正式名称，再进入院内路线。"
+    },
+    {
+      "id": "journey-step-04",
+      "name": "报到候诊",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "报到候诊",
+      "journey_order": 4,
+      "patient_text": "在预约单对应的报到点完成报到并候诊。"
+    },
+    {
+      "id": "journey-step-05",
+      "name": "完成检查",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "检查",
+      "journey_order": 5,
+      "patient_text": "按预约单上的完整检查项目名称打开检查卡。"
+    },
+    {
+      "id": "journey-step-06",
+      "name": "缴费、取药或报告",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "缴费取药或报告",
+      "journey_order": 6,
+      "patient_text": "按本次结算结果完成缴费、取药或查看报告领取安排。"
+    },
+    {
+      "id": "journey-step-07",
+      "name": "返回医生或离院",
+      "type": "journey_step",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方门诊流程",
+      "evidence": "示例共享旅程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "返回或离院",
+      "journey_order": 7,
+      "patient_text": "按医嘱返回医生处；无需返回时再离院。"
+    },
+    {
+      "id": "journey-branch-gyn-01",
+      "name": "妇科门诊分支",
+      "type": "journey_branch",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方妇科流程",
+      "evidence": "示例妇科差异审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["journey-step-04"],
+      "stage": "报到候诊",
+      "branch_key": "妇科门诊",
+      "selection_basis": "预约单、医嘱或院方正式服务名称手动选择",
+      "differences": ["妇科门诊完成检查后，预约单标明复诊时返回原妇科候诊区报到。"],
+      "patient_text": "仅显示已核验的妇科门诊差异。"
+    },
+    {
+      "id": "journey-branch-ob-01",
+      "name": "产科门诊分支",
+      "type": "journey_branch",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方产科流程",
+      "evidence": "示例产科差异审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["journey-step-04"],
+      "stage": "报到候诊",
+      "branch_key": "产科门诊",
+      "selection_basis": "预约单、医嘱或院方正式服务名称手动选择",
+      "differences": ["产科门诊报到时由患者本人完成预约信息核对，陪护在候诊区等候。"],
+      "patient_text": "仅显示已核验的产科门诊差异。"
+    },
+    {
+      "id": "journey-branch-ped-01",
+      "name": "儿科门诊分支",
+      "type": "journey_branch",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方儿科流程",
+      "evidence": "示例儿科差异审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["journey-step-04"],
+      "stage": "报到候诊",
+      "branch_key": "儿科门诊",
+      "selection_basis": "预约单、医嘱或院方正式服务名称手动选择",
+      "differences": ["儿科门诊报到时由监护人出示预约单，完成检查后按预约单返回儿科候诊区。"],
+      "patient_text": "仅显示已核验的儿科门诊差异。"
+    },
+    {
+      "id": "exam-category-ultrasound-01",
+      "name": "超声检查",
+      "type": "examination_category",
+      "conditions": ["普通门诊"],
+      "source": "虚构院方检查目录",
+      "evidence": "示例检查查找目录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-11-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["campus-identity-01"],
+      "stage": "检查",
+      "patient_text": "超声检查仅作为查找大类。"
+    },
+    {
+      "id": "exam-card-gyn-ultrasound-01",
+      "name": "示例经腹部妇科超声检查",
+      "type": "examination_card",
+      "conditions": ["普通门诊"],
+      "source": "虚构本院检查安排",
+      "evidence": "示例检查项目正式名称与流程审批记录",
+      "status": "verified",
+      "verified_on": "2026-08-01",
+      "expires_on": "2026-09-01",
+      "maintainer": "示例内容维护者",
+      "reviewer": "示例独立复核者",
+      "dependencies": ["exam-category-ultrasound-01"],
+      "stage": "检查",
+      "category": "超声检查（仅用于查找）",
+      "official_exam_name": "示例经腹部妇科超声检查",
+      "hospital_arrangements": {
+        "before_departure": [
+          {
+            "text": "携带本次预约单；饮水量和憋尿程度须以本次预约单为准。",
+            "supported_by": "appointment_order"
+          }
+        ],
+        "after_arrival": [
+          {
+            "text": "按预约单上的检查科室和报到方式完成报到。",
+            "supported_by": "appointment_order"
+          }
+        ],
+        "after_completion": [
+          {
+            "text": "查看本次单据上的报告领取安排；是否返回医生处以医嘱为准。",
+            "supported_by": "appointment_order"
+          }
+        ]
+      },
+      "general_safety": [
+        "如有妊娠可能、过敏史、植入物或其他特殊情况，主动向检查科室申报。"
+      ],
+      "unconfirmed": [
+        "空腹、精确饮水量、憋尿程度和采样时点未在本示例中确认，不显示固定数值。"
+      ],
+      "patient_text": "仅适用于完整项目名称一致的本次检查。"
+    }
+  ]
+}

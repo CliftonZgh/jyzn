@@ -1,0 +1,15 @@
+{
+  "name": "medical-guide",
+  "private": true,
+  "scripts": {
+    "test": "python tests/test_guide_package.py -v",
+    "build:guide": "python scripts/build_guide_package.py --source content/example-guide-package.json --output docs/guides/example",
+    "build": "npm run build:guide && UV_CACHE_DIR=/tmp/medical-guide-uv-cache uv run mkdocs build --strict",
+    "deploy": "npm run build && wrangler pages deploy",
+    "deploy:list": "wrangler pages deployment list --project-name medical-guide"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4",
+    "wrangler": "^4.28.1"
+  }
+}

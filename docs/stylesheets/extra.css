@@ -1,0 +1,190 @@
+:root {
+  --md-primary-fg-color: #087f78;
+  --md-primary-fg-color--light: #26a69a;
+  --md-primary-fg-color--dark: #05635e;
+  --guide-surface: #f2fbfa;
+}
+
+[data-md-color-scheme="slate"] {
+  --guide-surface: #153432;
+}
+
+.md-header {
+  background: linear-gradient(110deg, #075f5a, #0d9488);
+}
+
+.md-main__inner {
+  margin-top: 1.2rem;
+}
+
+.md-typeset h1 {
+  color: var(--md-primary-fg-color);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.md-typeset .grid.cards > ul > li {
+  border-radius: 1rem;
+  box-shadow: 0 8px 28px rgb(10 80 75 / 8%);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgb(10 80 75 / 14%);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.medical-card {
+  padding: 1.5rem;
+  border: 2px solid var(--md-primary-fg-color);
+  border-radius: 1rem;
+  background: var(--guide-surface);
+}
+
+.print-card {
+  margin-top: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid #006dcb;
+  outline-offset: 3px;
+}
+
+.md-typeset a,
+.md-typeset button {
+  overflow-wrap: anywhere;
+}
+
+.status,
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0.3rem 0.35rem 0;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.status--verified {
+  color: #075f3b;
+  background: #d9fbe8;
+  border-color: #8ce0b3;
+}
+
+.status--partial {
+  color: #765400;
+  background: #fff4c2;
+  border-color: #ead477;
+}
+
+.status--pending {
+  color: #5d6470;
+  background: #edf0f4;
+  border-color: #cbd1d9;
+}
+
+.status--focus {
+  color: #075f5a;
+  background: #d9f8f5;
+  border-color: #8bded7;
+}
+
+.meta-chip {
+  color: var(--md-default-fg-color--light);
+  background: var(--md-code-bg-color);
+  border-color: var(--md-default-fg-color--lightest);
+  font-weight: 500;
+}
+
+[data-md-color-scheme="slate"] .status--verified,
+[data-md-color-scheme="slate"] .status--partial,
+[data-md-color-scheme="slate"] .status--pending,
+[data-md-color-scheme="slate"] .status--focus {
+  color: #102321;
+}
+
+.city-grid > ul > li {
+  min-height: 10rem;
+}
+
+@media (max-width: 320px) {
+  .md-content__inner {
+    margin: 0 0.6rem 1.2rem;
+  }
+
+  .md-typeset {
+    font-size: 1rem;
+  }
+
+  .md-typeset table:not([class]) {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .hero-actions > * {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  body:has(#medical-card) * {
+    visibility: hidden;
+  }
+  body:has(#medical-card) #medical-card,
+  body:has(#medical-card) #medical-card * {
+    visibility: visible;
+  }
+  body:has(#medical-card) #medical-card {
+    position: absolute;
+    inset: 0;
+    color: #111;
+    background: #fff;
+    border-color: #087f78;
+  }
+
+  .guide-print-view {
+    color: #111;
+    font-size: 9pt;
+    line-height: 1.25;
+  }
+
+  .guide-print-view .admonition {
+    break-inside: avoid;
+    margin: 0.35rem 0;
+    padding: 0 0.5rem;
+  }
+
+  .guide-print-view h1,
+  .guide-print-view h3,
+  .guide-print-view p {
+    margin: 0.3rem 0;
+  }
+
+  .guide-print-view,
+  .guide-print-view * {
+    color: #000 !important;
+    background: #fff !important;
+    border-color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  .guide-print-view a::after {
+    content: " (" attr(href) ")";
+  }
+}
